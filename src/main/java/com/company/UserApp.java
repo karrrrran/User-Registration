@@ -14,7 +14,8 @@ public class UserApp {
             System.out.println("1. Add New User");
             System.out.println("2. Display all users");
             System.out.println("3. Remove a user");
-            System.out.println("4. Quit");
+            System.out.println("4. Update email address of user");
+            System.out.println("5. Quit");
             int option = sc.nextInt();
 
             if(option == 1) {
@@ -25,12 +26,18 @@ public class UserApp {
                 usrdao.printUsers();
             }
             else if(option == 3) {
-                System.out.println("Select a user number you want to remove from the display list:");
+                System.out.println("Select a user id number you want to remove from the display list:");
                 usrdao.printUsers();
                 int select = sc.nextInt();
-                usrdao.removeUser(usrdao.getUserNumber(select));
+                usrdao.removeUser(select);
             }
             else if(option == 4) {
+                System.out.println("Select a user id number you want to update email address from the list:");
+                usrdao.printUsers();
+                int select = sc.nextInt();
+                usrdao.updateUser(select);
+            }
+            else if(option == 5) {
                 System.out.println("Logged out!");
                 quit = true;
             }
@@ -76,14 +83,14 @@ public class UserApp {
         }
 
         System.out.println();
-        System.out.println("---------------------------------------");
+        System.out.println(" ");
         System.out.println("Added the User:");
         System.out.println("Name: " + user.getName());
         System.out.println("Email: " + user.getEmailAddress());
         System.out.println("Password: " + user.getPassword());
         System.out.println("Date of Birth: " + user.getDateOfBirth());
         System.out.println("Gender: " + user.getGender());
-        System.out.println("----------------------------------------");
+        System.out.println(" ");
         usersDAO.addUser(user);
     }
 }
